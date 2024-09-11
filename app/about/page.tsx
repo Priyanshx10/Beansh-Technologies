@@ -35,23 +35,7 @@ const AboutPage = () => {
       image: CEO,
       linkedin: 'https://www.linkedin.com/in/priyansh10/',
       twitter: 'https://x.com/Priyanshx10_'
-    },
-    { 
-      name: 'Jane Smith', 
-      role: 'CTO', 
-      bio: 'Former Google AI researcher, passionate about developing ethical and accessible AI solutions.', 
-      image: '/images/jane-smith.jpg',
-      linkedin: 'https://www.linkedin.com/in/janesmith',
-      twitter: 'https://twitter.com/janesmith'
-    },
-    { 
-      name: 'Mike Johnson', 
-      role: 'Lead Developer', 
-      bio: 'Full-stack expert specializing in scalable AI architectures and cloud-native solutions.', 
-      image: '/images/mike-johnson.jpg',
-      linkedin: 'https://www.linkedin.com/in/mikejohnson',
-      twitter: 'https://twitter.com/mikejohnson'
-    },
+    }
   ]
 
   return (
