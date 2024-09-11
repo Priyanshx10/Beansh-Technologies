@@ -36,45 +36,49 @@ const ServicesPage = () => {
   ]
 
   return (
-    <div className="container mx-auto px-4 py-16 bg-gradient-to-b from-gray-50 to-white">
-      <h1 className="text-5xl font-bold text-blue-700 mb-16 text-center">
-        Our Services
-      </h1>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {services.map((service, index) => (
-          <div 
-            key={index}
-            className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
-          >
-            <div className="flex items-center mb-6">
-              <service.icon className="text-4xl text-blue-600 mr-4" />
-              <h2 className="text-2xl font-semibold text-blue-800">{service.title}</h2>
-            </div>
-            <p className="text-gray-600 mb-6 text-lg">{service.description}</p>
-            <a 
-              href={`#case-study-${index + 1}`}
-              className="text-green-600 hover:text-green-800 transition-colors duration-300 flex items-center text-lg font-medium"
+    <div className="min-h-screen bg-gradient-to-b from-indigo-100 to-white">
+      <div className="container mx-auto px-4 py-20">
+        <h1 className="text-6xl font-extrabold text-indigo-800 mb-20 text-center leading-tight">
+          Our <span className="text-purple-600">Services</span>
+        </h1>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          {services.map((service, index) => (
+            <div 
+              key={index}
+              className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-indigo-100 group"
             >
-              View Case Study
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        ))}
-      </div>
+              <div className="flex items-center mb-6">
+                <div className="bg-indigo-100 p-3 rounded-full mr-4 group-hover:bg-indigo-200 transition-colors duration-300">
+                  <service.icon className="text-3xl text-indigo-600" />
+                </div>
+                <h2 className="text-2xl font-bold text-indigo-800 group-hover:text-purple-700 transition-colors duration-300">{service.title}</h2>
+              </div>
+              <p className="text-gray-600 mb-8 text-lg leading-relaxed">{service.description}</p>
+              <a 
+                href={`#case-study-${index + 1}`}
+                className="text-purple-600 hover:text-purple-800 transition-colors duration-300 flex items-center text-lg font-semibold group"
+              >
+                View Case Study
+                <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          ))}
+        </div>
 
-      <div className="mt-20 text-center">
-        <a 
-          href="/contact"
-          className="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 transition-colors duration-300 inline-flex items-center text-xl font-semibold shadow-lg hover:shadow-xl"
-        >
-          Explore All Services
-          <svg className="w-6 h-6 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
+        <div className="mt-24 text-center">
+          <a 
+            href="/contact"
+            className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-10 py-5 rounded-full hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 inline-flex items-center text-xl font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+          >
+            Explore All Services
+            <svg className="w-6 h-6 ml-3 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   )

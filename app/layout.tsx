@@ -16,7 +16,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AI Solutions - Revolutionize Your Business",
+  title: "Beansh AI Technologies - Revolutionize Your Business",
   description: "Unlock the power of artificial intelligence for your enterprise with our cutting-edge AI solutions.",
 };
 

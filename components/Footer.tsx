@@ -1,90 +1,72 @@
-import React from 'react'
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'
+import React from 'react';
+import Link from 'next/link';
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 
-const Footer = () => {
-  const socialMedia = [
-    { name: 'Facebook', url: 'https://facebook.com/aisolutions', icon: <FaFacebook /> },
-    { name: 'Twitter', url: 'https://twitter.com/aisolutions', icon: <FaTwitter /> },
-    { name: 'LinkedIn', url: 'https://linkedin.com/company/aisolutions', icon: <FaLinkedin /> },
-    { name: 'Instagram', url: 'https://instagram.com/aisolutions', icon: <FaInstagram /> },
-  ];
-
-  const termsAndPolicies = [
-    { name: 'Terms of Service', url: '/terms' },
-    { name: 'Privacy Policy', url: '/privacy' },
-    { name: 'Cookie Policy', url: '/cookies' },
-  ];
+const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-12">
+    <footer className="bg-gradient-to-r from-indigo-900 to-purple-800 text-white py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-2xl font-bold mb-4">AI Solutions</h3>
-            <p className="mb-4">Empowering businesses with cutting-edge AI technologies.</p>
-            <div className="flex space-x-4">
-              {socialMedia.map((platform) => (
-                <a
-                  key={platform.name}
-                  href={platform.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-indigo-200 transition duration-300"
-                >
-                  <span className="sr-only">{platform.name}</span>
-                  <div className="w-6 h-6">{platform.icon}</div>
-                </a>
-              ))}
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="space-y-6">
+            <h3 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-300">
+              Beansh AI Technologies
+            </h3>
+            <p className="text-sm text-gray-200">
+              Revolutionizing the future with state-of-the-art AI solutions.
+            </p>
+            <p className="text-xs text-gray-300">
+              © {currentYear} Beansh AI Technologies. All rights reserved.
+            </p>
           </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><a href="/" className="hover:text-indigo-200 transition duration-300">Home</a></li>
-              <li><a href="/about" className="hover:text-indigo-200 transition duration-300">About</a></li>
-              <li><a href="/services" className="hover:text-indigo-200 transition duration-300">Services</a></li>
-              <li><a href="/contact" className="hover:text-indigo-200 transition duration-300">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Legal</h3>
-            <ul className="space-y-2">
-              {termsAndPolicies.map((item) => (
-                <li key={item.name}>
-                  <a
-                    href={item.url}
-                    className="hover:text-indigo-200 transition duration-300"
-                  >
-                    {item.name}
-                  </a>
+          <div className="space-y-6">
+            <h4 className="text-xl font-semibold text-pink-300">Quick Links</h4>
+            <ul className="space-y-3">
+              {['Home', 'About', 'Services', 'Blog', 'Contact'].map((item) => (
+                <li key={item}>
+                  <Link href={`/${item.toLowerCase()}`} className="text-gray-200 hover:text-pink-300 transition duration-300 ease-in-out">
+                    {item}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-            <ul className="space-y-2">
-              <li className="flex items-center">
-                <FaPhone className="mr-2" />
-                <span>+1 (555) 123-4567</span>
-              </li>
-              <li className="flex items-center">
-                <FaEnvelope className="mr-2" />
-                <a href="mailto:contact@aisolutions.com" className="hover:text-indigo-200 transition duration-300">contact@aisolutions.com</a>
-              </li>
-              <li className="flex items-center">
-                <FaMapMarkerAlt className="mr-2" />
-                <span>123 AI Street, Tech City, TC 12345</span>
-              </li>
-            </ul>
+          <div className="space-y-6">
+            <h4 className="text-xl font-semibold text-pink-300">Connect With Us</h4>
+            <div className="flex space-x-5">
+              {[FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaGithub].map((Icon, index) => (
+                <a
+                  key={index}
+                  href="#"
+                  className="text-gray-200 hover:text-pink-300 transition duration-300 ease-in-out"
+                  aria-label={`Social media link ${index + 1}`}
+                >
+                  <Icon className="w-6 h-6" />
+                </a>
+              ))}
+            </div>
+            <div className="mt-6">
+              <h5 className="text-sm font-medium mb-3 text-gray-200">Stay updated with our newsletter</h5>
+              <form className="flex">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="bg-indigo-800 text-white px-4 py-3 rounded-l-md focus:outline-none focus:ring-2 focus:ring-pink-400 flex-grow"
+                />
+                <button
+                  type="submit"
+                  className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-r-md transition duration-300 ease-in-out"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-        <div className="mt-8 pt-8 border-t border-indigo-400 text-center">
-          <p>&copy; {new Date().getFullYear()} AI Solutions. All rights reserved.</p>
         </div>
       </div>
     </footer>
   );
-}
+};
 
-export default Footer
+export default Footer;

@@ -27,26 +27,26 @@ const Header = () => {
 
   return (
     <motion.header 
-      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}
+      className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.7 }}
     >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link href="/" className="text-2xl font-bold text-blue-700 hover:text-blue-900 transition-colors duration-300 flex items-center">
-            <FaRocket className="mr-2 text-3xl" />
-            AI Solutions
+          <Link href="/" className="text-2xl font-bold text-indigo-700 hover:text-indigo-900 transition-all duration-300 flex items-center">
+            <FaRocket className="mr-2 text-3xl text-indigo-600" />
+            Beansh AI Technologies
           </Link>
         </motion.div>
         <nav className="hidden md:block">
           <ul className="flex space-x-8">
             {navItems.map((item, index) => (
               <motion.li key={index} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <Link href={item.href} className="text-gray-700 hover:text-blue-700 transition-colors duration-300 flex items-center text-lg font-medium">
+                <Link href={item.href} className={`${scrolled ? 'text-indigo-700' : 'text-white'} hover:text-pink-500 transition-colors duration-300 flex items-center text-lg font-medium`}>
                   <item.icon className="mr-2" />
                   {item.text}
                 </Link>
@@ -55,7 +55,7 @@ const Header = () => {
           </ul>
         </nav>
         <motion.button
-          className="md:hidden text-blue-700 hover:text-blue-900 transition-colors duration-300"
+          className={`md:hidden ${scrolled ? 'text-indigo-700' : 'text-white'} hover:text-pink-500 transition-colors duration-300`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -69,14 +69,20 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.5 }}
             className="md:hidden bg-white shadow-lg"
           >
             <nav className="container mx-auto px-6 py-6">
               <ul className="space-y-6">
                 {navItems.map((item, index) => (
-                  <motion.li key={index} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Link href={item.href} className="text-gray-700 hover:text-blue-700 transition-colors duration-300 flex items-center text-xl font-medium">
+                  <motion.li key={index} 
+                    whileHover={{ scale: 1.05, x: 10 }} 
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Link href={item.href} className="text-indigo-700 hover:text-pink-500 transition-colors duration-300 flex items-center text-xl font-medium">
                       <item.icon className="mr-3 text-2xl" />
                       {item.text}
                     </Link>
