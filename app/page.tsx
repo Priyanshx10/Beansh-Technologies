@@ -1,8 +1,19 @@
+'use client'
+
 import React from 'react'
-import { FaRocket, FaGlobe, FaMobileAlt, FaShoppingCart, FaRobot, FaCogs, FaTools, FaQuoteLeft, FaQuoteRight, FaUser, FaBriefcase } from 'react-icons/fa'
+import CountUp from 'react-countup'
+import { FaGlobe, FaMobileAlt, FaShoppingCart, FaRobot, FaCogs, FaTools, FaQuoteLeft, FaQuoteRight } from 'react-icons/fa'
 import Image from 'next/image'
+import Link from 'next/link'
+import { FaArrowRight } from 'react-icons/fa'
 import Profile from '../assets/CEO.jpg'
-import BackgroundImage from '../public/back.jpg' // Make sure to add this image to your assets folder
+import BackgroundImage from '../public/back.jpg' 
+import WebsiteBg from '../public/AI.jpg'
+import MobileBg from '../public/mobile.jpg'
+import EcomBg from '../public/multiple.jpg'
+import AISolBg from '../public/music.jpg'
+import CustomBg from '../public/arm.jpg'
+import MaintenanceBg from '../public/women.jpg'
 
 const HomePage = () => {
   const services = [
@@ -10,41 +21,40 @@ const HomePage = () => {
       title: "Website Development",
       icon: <FaGlobe className="text-5xl text-green-600 mb-4" />,
       description: "Sleek designs and responsive layouts for modern web experiences.",
+      background: WebsiteBg,
     },
     {
       title: "Mobile App Development",
       icon: <FaMobileAlt className="text-5xl text-green-500 mb-4" />,
       description: "iOS and Android app development tailored to your business needs.",
+      background: MobileBg,
     },
     {
       title: "E-Commerce Solutions",
       icon: <FaShoppingCart className="text-5xl text-green-600 mb-4" />,
       description: "Complete online store solutions with payment gateways and inventory management.",
+      background: EcomBg,
     },
     {
       title: "AI Solutions",
       icon: <FaRobot className="text-5xl text-green-500 mb-4" />,
       description: "Chatbots, recommendation systems, and intelligent data analysis.",
+      background: AISolBg,
     },
     {
       title: "Custom Software Development",
       icon: <FaCogs className="text-5xl text-green-600 mb-4" />,
       description: "Tailored software solutions for businesses of all sizes.",
+      background: CustomBg,
     },
     {
       title: "Maintenance & Support",
       icon: <FaTools className="text-5xl text-green-500 mb-4" />,
       description: "Ongoing support and maintenance to keep your systems running smoothly.",
+      background: MaintenanceBg,
     },
   ]
 
-  const clients = [
-    { name: "TechCorp", icon: <FaUser className="text-6xl text-green-600" /> },
-    { name: "InnovateTech", icon: <FaBriefcase className="text-6xl text-green-500" /> },
-    { name: "FutureSystems", icon: <FaCogs className="text-6xl text-green-600" /> },
-    { name: "GlobalAI", icon: <FaRobot className="text-6xl text-green-500" /> },
-    { name: "SmartSolutions", icon: <FaTools className="text-6xl text-green-600" /> },
-  ]
 
   return (
     <div className="bg-gradient-to-b from-gray-100 to-white">
@@ -73,63 +83,121 @@ const HomePage = () => {
         <h2 className="text-6xl font-semibold mb-20 text-center text-green-800">Our Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
           {services.map((service, index) => (
-            <div key={index} className="bg-white p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200 transform hover:-translate-y-2">
-              {service.icon}
-              <h3 className="text-2xl font-semibold mb-4 text-green-800">{service.title}</h3>
-              <p className="text-gray-600 text-lg">{service.description}</p>
+            <div key={index} className="relative bg-white p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200 transform hover:-translate-y-2 overflow-hidden group">
+              <Image
+                src={service.background}
+                alt={`${service.title} Background`}
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+                className="opacity-10 group-hover:opacity-20 transition-opacity duration-300"
+              />
+              <div className="relative z-10">
+                {service.icon}
+                <h3 className="text-2xl font-semibold mb-4 text-green-800">{service.title}</h3>
+                <p className="text-gray-600 text-lg">{service.description}</p>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Trusted By Section */}
+      {/* Key Metrics Section */}
       <section className="py-24 bg-gradient-to-r from-green-100 to-white rounded-3xl mx-6">
-        <h2 className="text-6xl font-semibold mb-20 text-center text-green-800">Trusted By Industry Leaders</h2>
-        <div className="flex flex-wrap justify-center items-center gap-20">
-          {clients.map((client, index) => (
-            <div key={index} className="text-center transform hover:scale-110 transition-transform duration-300">
-              <div className="w-[200px] h-[100px] flex items-center justify-center mb-6 bg-white rounded-2xl shadow-lg">
-                {client.icon}
-              </div>
-              <p className="text-green-800 font-semibold text-xl">{client.name}</p>
+        <h2 className="text-6xl font-semibold mb-20 text-center text-green-800">Our Impact in Numbers</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div className="text-center">
+            <div className="text-5xl font-bold text-green-600 mb-4">
+              <CountUp end={98} suffix="%" duration={2.5} />
             </div>
-          ))}
+            <p className="text-xl text-green-800">Client Satisfaction</p>
+          </div>
+          <div className="text-center">
+            <div className="text-5xl font-bold text-green-600 mb-4">
+              <CountUp end={100} suffix="+" duration={2.5} />
+            </div>
+            <p className="text-xl text-green-800">Projects Completed</p>
+          </div>
+          <div className="text-center">
+            <div className="text-5xl font-bold text-green-600 mb-4">
+              <CountUp end={2} suffix="M+" duration={2.5} />
+            </div>
+            <p className="text-xl text-green-800">Data Points Processed</p>
+          </div>
+          <div className="text-center">
+            <div className="text-5xl font-bold text-green-600 mb-4">
+              <CountUp end={10} suffix="+" duration={2.5} />
+            </div>
+            <p className="text-xl text-green-800">Industries Served</p>
+          </div>
         </div>
         <div className="text-center mt-20">
-          <a href="/case-studies" className="text-green-600 hover:text-green-800 font-semibold text-2xl inline-flex items-center transition-colors duration-300">
-            View Our Case Studies
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </a>
+          <Link href="/about" className="text-green-600 hover:text-green-800 font-semibold text-2xl inline-flex items-center transition-colors duration-300">
+            Learn More About Our Impact
+            <FaArrowRight className="ml-3" />
+          </Link>
         </div>
       </section>
 
       {/* Testimonial */}
-      <section className="py-32 bg-gradient-to-r from-green-600 to-green-800 text-white rounded-3xl my-24 shadow-2xl mx-6">
-        <div className="max-w-5xl mx-auto text-center px-8">
-          <div className="mb-16 transform -translate-y-20">
-            <div className="bg-white rounded-full p-8 inline-block shadow-xl">
-              <FaRocket className="text-8xl text-green-600" />
+      <section className="py-32 bg-gradient-to-br from-green-700 via-green-600 to-green-800 text-white rounded-3xl my-24 shadow-2xl mx-6 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-pattern opacity-10"></div>
+        <div className="max-w-7xl mx-auto px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between">
+            <div className="lg:w-1/2 mb-16 lg:mb-0">
+              <h2 className="text-5xl font-bold mb-8 leading-tight">What Our Clients Say</h2>
+              <blockquote className="text-2xl font-light leading-relaxed mb-8">
+                <FaQuoteLeft className="text-4xl text-green-300 mb-4 opacity-50" />
+                <p className="italic">AI Solutions transformed our business, increasing efficiency by 300% and opening new revenue streams we never thought possible.</p>
+                <FaQuoteRight className="text-4xl text-green-300 mt-4 opacity-50 float-right" />
+              </blockquote>
+              <div className="flex items-center">
+                <Image 
+                  src={Profile} 
+                  alt="Priyansh Yadav" 
+                  width={80} 
+                  height={80} 
+                  className="rounded-full border-4 border-white shadow-lg" 
+                />
+                <div className="ml-4">
+                  <p className="font-bold text-xl">Priyansh Yadav</p>
+                  <p className="text-green-300">CEO, Beansh AI Technologies</p>
+                </div>
+              </div>
             </div>
-          </div>
-          <blockquote className="text-4xl font-light leading-relaxed mb-16 flex items-center">
-            <FaQuoteLeft className="text-6xl text-green-300 mr-6" />
-            <span>AI Solutions transformed our business, increasing efficiency by 300% and opening new revenue streams we never thought possible.</span>
-            <FaQuoteRight className="text-6xl text-green-300 ml-6" />
-          </blockquote>
-          <div className="flex items-center justify-center">
-            <Image src={Profile} alt="Priyansh Yadav" width={100} height={100} className="rounded-full mr-8 border-4 border-white" />
-            <div className="text-left">
-              <p className="font-bold text-3xl flex items-center">
-                <FaUser className="mr-3 text-green-300" /> Priyansh Yadav
-              </p>
-              <p className="text-2xl text-green-200 flex items-center mt-2">
-                <FaBriefcase className="mr-3 text-green-300" /> CEO of Beansh AI Technologies
-              </p>
+            <div className="lg:w-1/2 grid grid-cols-2 gap-4">
+              <Image 
+                src="/images/team-1.jpg" 
+                alt="Team Member 1" 
+                width={250} 
+                height={250} 
+                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" 
+              />
+              <Image 
+                src="/images/team-2.jpg" 
+                alt="Team Member 2" 
+                width={250} 
+                height={250} 
+                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" 
+              />
+              <Image 
+                src="/images/team-3.jpg" 
+                alt="Team Member 3" 
+                width={250} 
+                height={250} 
+                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" 
+              />
+              <Image 
+                src="/images/team-4.jpg" 
+                alt="Team Member 4" 
+                width={250} 
+                height={250} 
+                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" 
+              />
             </div>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-green-300 to-green-500"></div>
       </section>
     </div>
   )

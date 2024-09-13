@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaHome, FaCog, FaTag, FaInfoCircle, FaEnvelope, FaBars, FaTimes, FaSearch, FaUser } from 'react-icons/fa'
 import { BsCircleFill } from 'react-icons/bs'
@@ -10,6 +11,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const router = useRouter()
 
   const navItems = [
     { href: '/', text: 'Home', icon: FaHome },
@@ -38,8 +40,8 @@ const Header = () => {
   return (
     <motion.header 
       className={`fixed w-full z-50 transition-all duration-500 ${
-        scrolled ? 'bg-white/0 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      } ${isHovered ? 'bg-opacity-20' : 'bg-opacity-0'}`}
+        scrolled ? 'bg-green-100/80 backdrop-blur-md shadow-lg' : 'bg-green-100'
+      } ${isHovered ? 'bg-opacity-90' : 'bg-opacity-70'}`}
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
@@ -49,7 +51,7 @@ const Header = () => {
       <div className="container mx-auto px-8 py-6 flex justify-between items-center">
         <div className="flex items-center">
           <motion.button
-            className="text-white hover:text-red-400 transition-colors duration-300 mr-4 z-50"
+            className="text-green-800 hover:text-red-400 transition-colors duration-300 mr-4 z-50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -84,9 +86,9 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link href="/" className="text-3xl font-bold hover:text-green-400 transition-all duration-300 flex items-center">
-              <BsCircleFill className="mr-4 text-4xl text-white" />
-              <span className="text-white">
+            <Link href="/" className="text-3xl font-bold hover:text-green-600 transition-all duration-300 flex items-center">
+              <BsCircleFill className="mr-4 text-4xl text-green-600" />
+              <span className="text-green-800">
                 Beansh AI
               </span>
             </Link>
@@ -110,6 +112,7 @@ const Header = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className="bg-green-600 hover:bg-green-700 text-white rounded-full py-3 px-8 flex items-center transition-colors duration-300"
+            onClick={() => router.push('/login')}
           >
             <FaUser className="mr-3" />
             Login
