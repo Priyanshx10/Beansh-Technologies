@@ -167,32 +167,32 @@ const HomePage = () => {
             </div>
             <div className="lg:w-1/2 grid grid-cols-2 gap-4">
               <Image 
-                src="/images/team-1.jpg" 
+                src={WebsiteBg}
                 alt="Team Member 1" 
-                width={250} 
-                height={250} 
-                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" 
+                width={300} 
+                height={300} 
+                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 object-cover w-full h-full" 
               />
               <Image 
-                src="/images/team-2.jpg" 
+                src={MobileBg}
                 alt="Team Member 2" 
-                width={250} 
-                height={250} 
-                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" 
+                width={300} 
+                height={300} 
+                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 object-cover w-full h-full" 
               />
               <Image 
-                src="/images/team-3.jpg" 
+                src={EcomBg}
                 alt="Team Member 3" 
-                width={250} 
-                height={250} 
-                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" 
+                width={300} 
+                height={300} 
+                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 object-cover w-full h-full" 
               />
               <Image 
-                src="/images/team-4.jpg" 
+                src={AISolBg}
                 alt="Team Member 4" 
-                width={250} 
-                height={250} 
-                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" 
+                width={300} 
+                height={300} 
+                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 object-cover w-full h-full" 
               />
             </div>
           </div>
