@@ -18,12 +18,12 @@ const LiveChat: React.FC = () => {
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault()
     if (inputMessage.trim() !== "") {
-      const newMessage = { id: messages.length + 1, text: inputMessage, sender: "user" }
+      const newMessage: Message = { id: messages.length + 1, text: inputMessage, sender: "user" }
       setMessages([...messages, newMessage])
       setInputMessage("")
       // Simulate agent reply
       setTimeout(() => {
-        const agentReply = { id: messages.length + 2, text: "Thank you for your message. How else can I help you?", sender: "agent" }
+        const agentReply: Message = { id: messages.length + 2, text: "Thank you for your message. How else can I help you?", sender: "agent" }
         setMessages(prevMessages => [...prevMessages, agentReply])
       }, 1000)
     }
