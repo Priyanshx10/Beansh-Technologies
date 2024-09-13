@@ -6,12 +6,14 @@ import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaHome, FaCog, FaTag, FaInfoCircle, FaEnvelope, FaBars, FaTimes, FaSearch, FaUser } from 'react-icons/fa'
 import { BsCircleFill } from 'react-icons/bs'
+import { SignInButton, useAuth, UserButton } from '@clerk/nextjs';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const router = useRouter()
+  const { isSignedIn } = useAuth();
 
   const navItems = [
     { href: '/', text: 'Home', icon: FaHome },
@@ -108,15 +110,20 @@ const Header = () => {
             />
             <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-green-500" />
           </motion.div>
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="bg-green-600 hover:bg-green-700 text-white rounded-full py-3 px-8 flex items-center transition-colors duration-300"
-            onClick={() => router.push('/login')}
-          >
-            <FaUser className="mr-3" />
-            Login
-          </motion.button>
+          {!isSignedIn ? (
+            <SignInButton mode="modal">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="bg-green-600 hover:bg-green-700 text-white rounded-full py-3 px-8 flex items-center transition-colors duration-300"
+              >
+                <FaUser className="mr-3" />
+                Login
+              </motion.button>
+            </SignInButton>
+          ) : (
+            <UserButton afterSignOutUrl="/" />
+          )}
         </div>
       </div>
 
