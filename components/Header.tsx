@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaHome, FaCog, FaTag, FaInfoCircle, FaEnvelope, FaBars, FaTimes, FaSearch, FaUser } from 'react-icons/fa'
-import { BsCircleFill } from 'react-icons/bs'
+import { FaHome, FaCog, FaTag, FaInfoCircle, FaEnvelope, FaBars, FaTimes, FaUser } from 'react-icons/fa'
 import { SignInButton, useAuth, UserButton } from '@clerk/nextjs'
 import { useMediaQuery } from 'react-responsive'
 
@@ -12,7 +12,6 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
   const { isSignedIn } = useAuth()
   const isMobile = useMediaQuery({ maxWidth: 768 })
 
@@ -33,11 +32,7 @@ const Header = () => {
   }, [])
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset'
   }, [isMenuOpen])
 
   const headerClass = `fixed w-full z-50 transition-all duration-500 ${
@@ -92,10 +87,7 @@ const Header = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Link href="/" className="text-2xl sm:text-3xl font-bold hover:text-green-600 transition-all duration-300 flex items-center">
-              <BsCircleFill className="mr-2 sm:mr-4 text-3xl sm:text-4xl text-green-600" />
-              <span className="text-green-800">
-                Beansh AI
-              </span>
+              <span className="text-green-800">Beenasnh AI</span>
             </Link>
           </motion.div>
         </div>
@@ -111,29 +103,6 @@ const Header = () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="relative"
-          >
-            {isMobile ? (
-              <button
-                onClick={() => setIsSearchOpen(!isSearchOpen)}
-                className="text-green-800 hover:text-green-600 transition-colors duration-300"
-              >
-                <FaSearch size={20} />
-              </button>
-            ) : (
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  className="bg-white text-green-800 border-2 border-green-500 rounded-full py-2 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-green-400 w-40 sm:w-auto"
-                />
-                <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-green-500" />
-              </div>
-            )}
-          </motion.div>
           {!isSignedIn ? (
             <SignInButton mode="modal">
               <motion.button
@@ -185,31 +154,13 @@ const Header = () => {
                 </ul>
               </nav>
               <div className="text-center text-white text-lg mt-16">
-                © 2023 Beansh AI. All rights reserved.
+                © 2023 Beenasnh AI. All rights reserved.
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {isSearchOpen && isMobile && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="absolute top-full left-0 right-0 bg-white shadow-md p-4"
-          >
-            <input
-              type="text"
-              placeholder="Search..."
-              className="w-full bg-gray-100 text-green-800 border-2 border-green-500 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-green-400"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-500 to-transparent"></div>
     </motion.header>
   )

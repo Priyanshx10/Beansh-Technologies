@@ -12,7 +12,7 @@ const AboutPage = () => {
     { 
       name: 'Priyansh Yadav', 
       role: 'CEO & Founder', 
-      bio: 'Visionary leader with 4+ years in AI and software development, driving innovation at Beansh AI.', 
+      bio: 'Visionary leader with 4+ years in AI and software development, driving innovation at Beenasnhnh AI.', 
       image: CEO,
       linkedin: 'https://www.linkedin.com/in/priyansh10/',
       twitter: 'https://x.com/Priyanshx10_'
@@ -33,7 +33,7 @@ const AboutPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          About <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-800">Beansh AI</span>
+          About <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-800">Beenasnhnh AI</span>
         </motion.h1>
         
         <motion.section 
@@ -49,7 +49,7 @@ const AboutPage = () => {
                 Our Mission
               </h2>
               <p className="text-lg leading-relaxed text-gray-700">
-                At Beansh AI Technologies, we&apos;re on a mission to democratize artificial intelligence. We make cutting-edge AI technologies accessible and beneficial for businesses of all sizes, bridging the gap between complex AI systems and practical, real-world applications.
+                At Beenasnhnh AI Technologies, we&apos;re on a mission to democratize artificial intelligence. We make cutting-edge AI technologies accessible and beneficial for businesses of all sizes, bridging the gap between complex AI systems and practical, real-world applications.
               </p>
             </div>
             <div className="space-y-6">

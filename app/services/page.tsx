@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 
 const ServicesPage = () => {
-  const [hoveredService, setHoveredService] = useState(null)
+  const [hoveredService, setHoveredService] = useState<number | null>(null)
 
   const services = [
     {

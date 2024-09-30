@@ -19,13 +19,13 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="space-y-6">
             <h3 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-300 to-white">
-              Beansh AI Technologies
+              Beenasnh AI Technologies
             </h3>
             <p className="text-sm text-gray-200">
               Revolutionizing the future with eco-friendly AI solutions.
             </p>
             <p className="text-xs text-gray-300">
-              © {currentYear} Beansh AI Technologies. All rights reserved.
+              © {currentYear} Beenasnhnh AI Technologies. All rights reserved.
             </p>
           </div>
           <div className="space-y-6">
