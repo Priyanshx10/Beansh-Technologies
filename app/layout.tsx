@@ -19,7 +19,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Beenasnh AI Technologies", // Updated title
+  title: "Beenansh AI Technologies", // Updated title
   description: "Unlock the power of artificial intelligence for your enterprise with our cutting-edge AI solutions.",
 };
 

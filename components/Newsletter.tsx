@@ -1,52 +1,81 @@
 "use client"
 
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Mail, Send } from 'lucide-react'
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { useToast } from "@/hooks/use-toast"
 
-const Newsletter = () => {
+export default function Newsletter() {
   const [email, setEmail] = useState('')
-  const [status, setStatus] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { toast } = useToast()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setStatus('Subscribing...')
+    setIsSubmitting(true)
     
-    // Here you would typically send the email to your backend or newsletter service
-    // This is a mock API call
     try {
       // Simulating an API call
       await new Promise(resolve => setTimeout(resolve, 1000))
-      setStatus('Thank you for subscribing!')
+      toast({
+        title: "Subscribed!",
+        description: "Thank you for subscribing to our newsletter.",
+      })
       setEmail('')
     } catch (error) {
-      setStatus('An error occurred. Please try again.')
+      toast({
+        title: "Error",
+        description: "An error occurred. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
   return (
-    <div className="bg-gradient-to-r from-green-600 to-green-700 p-8 rounded-lg shadow-lg">
-      <h2 className="text-3xl font-bold text-white mb-4">Stay Updated</h2>
-      <p className="text-green-100 mb-6">Subscribe to our newsletter for the latest AI insights and updates.</p>
+    <motion.div
+      className="bg-gradient-to-r from-amber-500 to-amber-600 p-8 rounded-xl shadow-xl"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <h2 className="text-3xl font-serif font-bold text-white mb-4">Stay Informed</h2>
+      <p className="text-amber-100 mb-6">Subscribe to our newsletter for the latest AI insights and updates.</p>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            required
-            className="flex-grow px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300"
-          />
-          <button
+          <div className="relative flex-grow">
+            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-amber-500" />
+            <Input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              required
+              className="pl-10 py-6 rounded-md bg-white text-amber-900 placeholder-amber-300 focus:ring-2 focus:ring-amber-300 focus:border-transparent"
+            />
+          </div>
+          <Button
             type="submit"
-            className="bg-white text-green-600 px-6 py-2 rounded-md font-semibold hover:bg-green-100 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+            disabled={isSubmitting}
+            className="bg-white text-amber-600 px-6 py-6 rounded-md font-semibold hover:bg-amber-100 transition duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
           >
+            {isSubmitting ? (
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              >
+                <Send className="mr-2 h-4 w-4" />
+              </motion.div>
+            ) : (
+              <Send className="mr-2 h-4 w-4" />
+            )}
             Subscribe
-          </button>
+          </Button>
         </div>
-        {status && <p className="text-white text-sm mt-2">{status}</p>}
       </form>
-    </div>
+    </motion.div>
   )
 }
-
-export default Newsletter

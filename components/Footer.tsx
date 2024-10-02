@@ -14,26 +14,26 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-r from-green-700 to-green-900 text-white py-16">
+    <footer className="bg-gradient-to-r from-amber-700 to-amber-900 text-white py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="space-y-6">
-            <h3 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-300 to-white">
-              Beenasnh AI Technologies
+            <h3 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-300 to-white">
+              Beenansh AI Technologies
             </h3>
             <p className="text-sm text-gray-200">
               Revolutionizing the future with eco-friendly AI solutions.
             </p>
             <p className="text-xs text-gray-300">
-              © {currentYear} Beenasnhnh AI Technologies. All rights reserved.
+              © {currentYear} Beenansh AI Technologies. All rights reserved.
             </p>
           </div>
           <div className="space-y-6">
-            <h4 className="text-xl font-semibold text-green-300">Quick Links</h4>
+            <h4 className="text-xl font-semibold text-amber-300">Quick Links</h4>
             <ul className="space-y-3">
               {['Home', 'About', 'Services', 'Blog', 'Contact'].map((item) => (
                 <li key={item}>
-                  <Link href={`/${item.toLowerCase()}`} className="text-gray-200 hover:text-green-300 transition duration-300 ease-in-out">
+                  <Link href={`/${item.toLowerCase()}`} className="text-gray-200 hover:text-amber-300 transition duration-300 ease-in-out">
                     {item}
                   </Link>
                 </li>
@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div className="space-y-6">
-            <h4 className="text-xl font-semibold text-green-300">Connect With Us</h4>
+            <h4 className="text-xl font-semibold text-amber-300">Connect With Us</h4>
             <div className="flex space-x-5">
               {socialLinks.map(({ Icon, href }, index) => (
                 <a
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-200 hover:text-green-300 transition duration-300 ease-in-out"
+                  className="text-gray-200 hover:text-amber-300 transition duration-300 ease-in-out"
                   aria-label={`Social media link ${index + 1}`}
                 >
                   <Icon className="w-6 h-6" />
@@ -63,13 +63,13 @@ const Footer: React.FC = () => {
                   <input
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full bg-green-800 text-white px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400"
+                    className="w-full bg-amber-800 text-white px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-400"
                   />
-                  <FaEnvelope className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-300" />
+                  <FaEnvelope className="absolute right-3 top-1/2 transform -translate-y-1/2 text-amber-300" />
                 </div>
                 <button
                   type="submit"
-                  className="bg-white text-green-800 px-6 py-3 rounded-md transition duration-300 ease-in-out hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-400"
+                  className="bg-white text-amber-800 px-6 py-3 rounded-md transition duration-300 ease-in-out hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-400"
                 >
                   Subscribe
                 </button>
@@ -77,9 +77,9 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-green-600 text-center">
+        <div className="mt-12 pt-8 border-t border-amber-600 text-center">
           <p className="text-sm text-gray-300">
-            Committed to sustainable AI solutions for a greener future.
+            Committed to sustainable AI solutions for a amberer future.
           </p>
         </div>
       </div>
