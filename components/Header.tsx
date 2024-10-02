@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Home, Settings, Tag, Info, Mail, Menu, X } from 'lucide-react'
+import { Home, Settings, Tag, Info, Mail, Menu } from 'lucide-react'
 import { SignInButton, useAuth, UserButton } from '@clerk/nextjs'
-import { useMediaQuery } from 'react-responsive'
+
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
@@ -14,7 +13,6 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const { isSignedIn } = useAuth()
-  const isMobile = useMediaQuery({ maxWidth: 768 })
 
   const navItems = [
     { href: '/', text: 'Home', icon: Home },

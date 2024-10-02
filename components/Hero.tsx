@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function HeroSection() {
   return (
@@ -62,7 +63,7 @@ export default function HeroSection() {
             >
               <div className="relative block w-full bg-white rounded-lg overflow-hidden">
                 <span className="sr-only">Watch our video to learn more</span>
-                <img
+                <Image
                   className="w-full"
                   src="/placeholder.svg?height=400&width=600"
                   alt="AI visualization"

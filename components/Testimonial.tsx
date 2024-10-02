@@ -7,6 +7,7 @@ import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Image from 'next/image'
 
 const testimonials = [
   {
@@ -125,10 +126,10 @@ export default function Testimonial() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-16 flex justify-center space-x-8"
         >
-          <img src="/placeholder.svg?height=40&width=120" alt="Client logo" className="h-8 sm:h-10" />
-          <img src="/placeholder.svg?height=40&width=120" alt="Client logo" className="h-8 sm:h-10" />
-          <img src="/placeholder.svg?height=40&width=120" alt="Client logo" className="h-8 sm:h-10" />
-          <img src="/placeholder.svg?height=40&width=120" alt="Client logo" className="h-8 sm:h-10" />
+          <Image src="/placeholder.svg?height=40&width=120" alt="Client logo" className="h-8 sm:h-10" />
+          <Image src="/placeholder.svg?height=40&width=120" alt="Client logo" className="h-8 sm:h-10" />
+          <Image src="/placeholder.svg?height=40&width=120" alt="Client logo" className="h-8 sm:h-10" />
+          <Image src="/placeholder.svg?height=40&width=120" alt="Client logo" className="h-8 sm:h-10" />
         </motion.div>
       </div>
     </section>
