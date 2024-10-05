@@ -17,7 +17,6 @@ interface Service {
   background: string;
 }
 
-
 const services = [
   {
     title: "Website Development",
@@ -67,10 +66,10 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => (
       quality={100}
       className="opacity-10 group-hover:opacity-20 transition-opacity duration-300"
     />
-    <CardContent className="relative z-10 p-6">
-      <service.icon className="w-12 h-12 text-amber-600 mb-4" />
-      <h3 className="text-2xl font-serif font-semibold mb-4 text-amber-800">{service.title}</h3>
-      <p className="text-gray-600 text-lg">{service.description}</p>
+    <CardContent className="relative z-10 p-4 sm:p-6">
+      <service.icon className="w-10 h-10 sm:w-12 sm:h-12 text-amber-600 mb-3 sm:mb-4" />
+      <h3 className="text-xl sm:text-2xl font-serif font-semibold mb-2 sm:mb-4 text-amber-800">{service.title}</h3>
+      <p className="text-gray-600 text-base sm:text-lg">{service.description}</p>
     </CardContent>
   </Card>
 )
@@ -83,18 +82,19 @@ interface MetricCardProps {
 
 const MetricCard: React.FC<MetricCardProps> = ({ end, suffix, label }) => (
   <Card>
-    <CardContent className="p-6 text-center">
-      <div className="text-5xl font-bold text-amber-600 mb-4">
+    <CardContent className="p-4 sm:p-6 text-center">
+      <div className="text-4xl sm:text-5xl font-bold text-amber-600 mb-2 sm:mb-4">
         <CountUp end={end} suffix={suffix} duration={2.5} />
       </div>
-      <p className="text-xl text-amber-800 font-serif">{label}</p>
+      <p className="text-lg sm:text-xl text-amber-800 font-serif">{label}</p>
     </CardContent>
   </Card>
 )
+
 export default function HomePage() {
   return (
     <div className="bg-gradient-to-b from-amber-50 to-white">
-      <section className="relative h-screen flex items-center justify-center">
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6">
         <Image
           src="/back.jpg"
           alt="Background image of a cityscape"
@@ -105,14 +105,14 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-amber-900 opacity-50 z-10"></div>
         <motion.div 
-          className="relative z-20 text-center text-white"
+          className="relative z-20 text-center text-white max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-6xl sm:text-7xl font-serif font-bold mb-8">Revolutionize Your Business with AI</h1>
-          <p className="text-2xl sm:text-3xl mb-12 opacity-90 font-light">Unlock the power of artificial intelligence for your enterprise</p>
-          <Button asChild size="lg" className="bg-white text-amber-800 hover:bg-amber-100 px-10 py-6 rounded-full text-xl font-semibold transition duration-300 shadow-lg hover:shadow-xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-4 sm:mb-8">Revolutionize Your Business with AI</h1>
+          <p className="text-xl sm:text-2xl md:text-3xl mb-8 sm:mb-12 opacity-90 font-light">Unlock the power of artificial intelligence for your enterprise</p>
+          <Button asChild size="lg" className="bg-white text-amber-800 hover:bg-amber-100 px-6 sm:px-10 py-3 sm:py-6 rounded-full text-lg sm:text-xl font-semibold transition duration-300 shadow-lg hover:shadow-xl">
             <Link href="/about">
               Get Started
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -121,9 +121,9 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      <section className="py-24 container mx-auto px-6">
-        <h2 className="text-5xl sm:text-6xl font-serif font-semibold mb-20 text-center text-amber-800">Our Services</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-16">
+      <section className="py-16 sm:py-24 container mx-auto px-4 sm:px-6">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-semibold mb-12 sm:mb-20 text-center text-amber-800">Our Services</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-16">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -137,16 +137,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-r from-amber-100 to-white rounded-3xl mx-6">
-        <h2 className="text-5xl sm:text-6xl font-serif font-semibold mb-20 text-center text-amber-800">Our Impact in Numbers</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+      <section className="py-16 sm:py-24 bg-gradient-to-r from-amber-100 to-white rounded-3xl mx-4 sm:mx-6">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-semibold mb-12 sm:mb-20 text-center text-amber-800">Our Impact in Numbers</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 px-4 sm:px-6">
           <MetricCard end={98} suffix="%" label="Client Satisfaction" />
           <MetricCard end={100} suffix="+" label="Projects Completed" />
           <MetricCard end={2} suffix="M+" label="Data Points Processed" />
           <MetricCard end={10} suffix="+" label="Industries Served" />
         </div>
-        <div className="text-center mt-20">
-          <Button asChild variant="link" size="lg" className="text-amber-600 hover:text-amber-800 font-semibold text-2xl">
+        <div className="text-center mt-12 sm:mt-20">
+          <Button asChild variant="link" size="lg" className="text-amber-600 hover:text-amber-800 font-semibold text-xl sm:text-2xl">
             <Link href="/about">
               Learn More About Our Impact
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -155,28 +155,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-32 bg-gradient-to-br from-amber-700 via-amber-600 to-amber-800 text-white rounded-3xl my-24 shadow-2xl mx-6 relative overflow-hidden">
+      <section className="py-20 sm:py-32 bg-gradient-to-br from-amber-700 via-amber-600 to-amber-800 text-white rounded-3xl my-16 sm:my-24 shadow-2xl mx-4 sm:mx-6 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[url('/pattern.svg')] opacity-10"></div>
-        <div className="max-w-7xl mx-auto px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between">
-            <div className="lg:w-1/2 mb-16 lg:mb-0">
-              <h2 className="text-4xl sm:text-5xl font-serif font-bold mb-8 leading-tight">What Our Clients Say</h2>
-              <blockquote className="text-xl sm:text-2xl font-light leading-relaxed mb-8">
-                <Quote className="h-8 w-8 text-amber-300 mb-4 opacity-50" />
+            <div className="lg:w-1/2 mb-12 lg:mb-0">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-6 sm:mb-8 leading-tight">What Our Clients Say</h2>
+              <blockquote className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed mb-6 sm:mb-8">
+                <Quote className="h-6 w-6 sm:h-8 sm:w-8 text-amber-300 mb-3 sm:mb-4 opacity-50" />
                 <p className="italic">AI Solutions transformed our business, increasing efficiency by 300% and opening new revenue streams we never thought possible.</p>
-                <Quote className="h-8 w-8 text-amber-300 mt-4 opacity-50 float-right" />
+                <Quote className="h-6 w-6 sm:h-8 sm:w-8 text-amber-300 mt-3 sm:mt-4 opacity-50 float-right" />
               </blockquote>
               <div className="flex items-center">
                 <Image 
                   src={CEO}
                   alt="Priyansh Yadav" 
-                  width={80} 
-                  height={80} 
+                  width={60}
+                  height={60}
                   className="rounded-full border-4 border-white shadow-lg" 
                 />
                 <div className="ml-4">
-                  <p className="font-bold text-xl">Priyansh Yadav</p>
-                  <p className="text-amber-300">CEO, Beenansh AI Technologies</p>
+                  <p className="font-bold text-lg sm:text-xl">Priyansh Yadav</p>
+                  <p className="text-amber-300 text-sm sm:text-base">CEO, Beenansh AI Technologies</p>
                 </div>
               </div>
             </div>
